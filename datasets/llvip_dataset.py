@@ -17,10 +17,19 @@ class LLVIPDataset(Dataset):
         self.img_size = img_size
         self.is_train = is_train
 
+        # Support both 'thermal' and 'infrared' directory names automatically
         if not os.path.exists(thermal_dir):
-            raise FileNotFoundError(f"Thermal directory not found: {thermal_dir}")
+            alt_thermal_dir = thermal_dir.replace("thermal", "infrared")
+            if os.path.exists(alt_thermal_dir):
+                thermal_dir = alt_thermal_dir
+            else:
+                raise FileNotFoundError(f"Thermal/Infrared directory not found: {thermal_dir} or {alt_thermal_dir}")
+
         if not os.path.exists(visible_dir):
             raise FileNotFoundError(f"Visible directory not found: {visible_dir}")
+
+        self.thermal_dir = thermal_dir
+        self.visible_dir = visible_dir
 
         # List all image files (assuming matching file names in both folders)
         valid_extensions = ('.jpg', '.png', '.jpeg', '.bmp')
