@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Environment / IDE
+.vscode/
+.idea/
+.ipynb_checkpoints/
+
+# Project Checkpoints & Outputs (avoid pushing large binaries to git)
+checkpoints/
+results/
+data/
+*.pth
+*.tar
+*.zip
