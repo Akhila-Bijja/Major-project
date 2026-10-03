@@ -65,7 +65,7 @@ class LLVIPDataset(Dataset):
         # List all image files (assuming matching file names in both folders)
         valid_extensions = ('.jpg', '.png', '.jpeg', '.bmp')
         self.image_filenames = sorted([
-            f for f in os.listdir(thermal_dir)
+            f for f in os.listdir(self.thermal_dir)
             if f.lower().endswith(valid_extensions)
         ])
         
