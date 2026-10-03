@@ -1,4 +1,9 @@
 import os
+import sys
+
+# Ensure root directory is in sys.path for Kaggle / subshell execution
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
 import torch
 import torchvision.utils as vutils
 from torch.utils.data import DataLoader
